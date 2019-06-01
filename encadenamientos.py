@@ -20,14 +20,14 @@ def EncadenamientoHA(parametros):
 
 def EncadenamientoHAd(parametros):
     BC, BH, meta = parametros
-    print('|NH  | R          |      BH     |')
+    print('|NH   | Meta | R |     BH     ')
     while (not comp(meta, BH)):
         skip = False
         for regla in BC:
             if comp(regla.getPremisas(), BH) and not comp(regla.getConcluciones(), BH):
                 #print ("Se aplico Regla:", (regla.getPremisas(), regla.getConcluciones()))
                 BH = BH + regla.getConcluciones()
-                print('|'+str(regla.getConcluciones())+'|'+str(regla.getPremisas())+'|'+str(BH))
+                print('|'+str(regla.getConcluciones())+'|  '+meta+'   | '+str(regla.getIndex())+' |'+str(BH))
                 skip = True
             if skip:
                 break
