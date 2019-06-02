@@ -2,6 +2,12 @@ from generador import *
 from encadenamientos import *
 import os
 
+def comp(lista1, lista2):
+    for val in lista1:
+        if val not in lista2:
+            return False
+    return True
+
 if __name__ == "__main__":
     gen = Generador()
     ctrl = True
@@ -29,7 +35,13 @@ if __name__ == "__main__":
                 EncadenamientoHAd([BC,BH,m])
             elif opc == '2':
                 print('Encadenamiento hacia atrás')
-                EncadenamientoHA([BC,BH,m])
+                print('|NH   | Meta | R  |     BH     ')
+                print('|     |  '+m+'   |    |'+str(BH))
+                m, BH= EncadenamientoHA([BC,BH,m])
+                if comp(m, BH):
+                    print('El sistema si tiene solución')
+                else:
+                    print("El sistema no tiene solución")  
             else:
                 print('Error, intentelo de nuevo')
                 flag = True
@@ -46,3 +58,4 @@ if __name__ == "__main__":
             else:
                 print('Error, intentelo de nuevo')
                 flag=True
+        print('Terminando programa...\nAdios')

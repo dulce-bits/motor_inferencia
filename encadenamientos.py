@@ -12,10 +12,10 @@ def EncadenamientoHA(parametros):
                 else:
                     for premisa in regla.getPremisas():
                         if premisa not in BH:
-                            EncadenamientoHA([BC, BH, [premisa]])                           
+                            EncadenamientoHA([BC, BH, premisa])                           
             if skip:
-                break  
-    return
+                break
+    return meta,BH
 
 
 def EncadenamientoHAd(parametros):

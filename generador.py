@@ -23,6 +23,7 @@ class Generador:
     def GenerarBH(self,n): 
         hechos=[]
         for i in range(n):
+            print('Ingrese hecho')
             hechos.append(input())
 
         return hechos
