@@ -30,15 +30,6 @@ if __name__ == "__main__":
             elif opc == '2':
                 print('Encadenamiento hacia atrás')
                 Encad_Atras([BC,BH,m])
-                '''
-                print('|NH   | Meta | R  |     BH     ')
-                print('|     |  '+m+'   |    |'+str(BH))
-                m, BH= Encad_Atras([BC,BH,m])
-                if comp(m, BH):
-                    print('El sistema si tiene solución')
-                else:
-                    print("El sistema no tiene solución")
-                '''  
             else:
                 print('Error, intentelo de nuevo')
                 flag = True

@@ -2,17 +2,17 @@ from prettytable import PrettyTable
 
 def Encad_Atras(parametros):
     BC,BH,meta = parametros
-    CC=[]
     t = PrettyTable(['CC','NM','Meta','R','BH'])
     t.add_row([' ',' ',meta,' ',str(BH)])
-    result = verificar(BC,BH,meta,CC,t)
+    result = verificar(BC,BH,meta,t)
     print(t)
     if result:
         print('El sistema si tiene solución')
     else:
         print('El sistema no tiene solución')
 
-def verificar(BC,BH,meta,CC,t):
+def verificar(BC,BH,meta,t):
+    CC=[]
     verificado = False
     if comp(meta,BH):
         return True
@@ -26,7 +26,7 @@ def verificar(BC,BH,meta,CC,t):
             verificado = True
             while NM != [] and verificado:
                 meta = NM.pop(0)
-                verificado = verificar(BC,BH,meta,CC,t)
+                verificado = verificar(BC,BH,meta,t)
                 if verificado and meta not in BH:
                     BH.append(meta)
         t.add_row([printCC(CC), str(regla.getConclusion()), str(meta), 'R'+str(regla.getIndex()),str(BH)])
@@ -40,26 +40,6 @@ def equipar2(CC,BC,meta):
         if r in BC:
             BC.remove(r)
     return CC
-
-'''
-def Encad_Atras(parametros):
-    BC, BH, meta = parametros
-    while (not comp(meta, BH)):
-        skip = False
-        for regla in BC:
-            if comp(meta, regla.getConclusion()):
-                if comp(regla.getPremisas(), BH):
-                    BH.extend(regla.getConclusion()) # agrega a la BH la conclusión de esa regla
-                    print('|'+str(regla.getPremisas())+'| '+str(meta)+' | R'+str(regla.getIndex())+' |'+str(BH))
-                    skip = True
-                else:
-                    for premisa in regla.getPremisas():
-                        if premisa not in BH:
-                            Encad_Atras([BC, BH, premisa])                           
-            if skip:
-                break
-    return meta,BH
-'''
 
 def Encad_Adelante(parametros):
     t = PrettyTable(['CC','NH','Meta','R','BH'])

@@ -1,10 +1,8 @@
 from Regla import Regla
 
-#Reglas y base de conocimiento de ejemplo para una computadora que no sirve
-
 class Generador:
 
-    def GenerarBC(self,filename):   #Aqui se definen las reglas X->Y|-Conclusion
+    def GenerarBC(self,filename):
         contador = 1  # el indice de la regla
         f = open(filename,'r')
         reglas=[]
