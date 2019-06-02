@@ -5,32 +5,37 @@ def EncadenamientoHA(parametros):
         for regla in BC:
             if comp(meta, regla.getConcluciones()):
                 if comp(regla.getPremisas(), BH):
-                    print (str(regla.getPremisas().index(regla.getPremisas()))+"Se aplico ReglaJAJAJAJASS:", (regla.getPremisas(), regla.getConcluciones()))
+                    #print ("Se aplico Regla:", (regla.getPremisas(), regla.getConcluciones()))
                     BH.extend(regla.getConcluciones()) # agrega a la BH la conclusión de esa regla
+                    print('|'+str(regla.getPremisas())+'| '+str(meta)+' | R'+str(regla.getIndex())+' |'+str(BH))
                     skip = True
                 else:
                     for premisa in regla.getPremisas():
                         if premisa not in BH:
-                            EncadenamientoHA([BC, BH, [premisa]])
+                            EncadenamientoHA([BC, BH, [premisa]])                           
             if skip:
-                break
-    print (BH)
+                break  
     return
 
 
 def EncadenamientoHAd(parametros):
     BC, BH, meta = parametros
-    print('|NH   | Meta | R |     BH     ')
+    print('|NH   | Meta | R  |     BH     ')
+    print('|     |  '+meta+'   |    |'+str(BH))
     while (not comp(meta, BH)):
         skip = False
         for regla in BC:
             if comp(regla.getPremisas(), BH) and not comp(regla.getConcluciones(), BH):
                 #print ("Se aplico Regla:", (regla.getPremisas(), regla.getConcluciones()))
                 BH = BH + regla.getConcluciones()
-                print('|'+str(regla.getConcluciones())+'|  '+meta+'   | '+str(regla.getIndex())+' |'+str(BH))
+                print('|'+str(regla.getConcluciones())+'|  '+meta+'   | R'+str(regla.getIndex())+' |'+str(BH))
                 skip = True
             if skip:
                 break
+    if comp(meta, BH):
+        print('El sistema si tiene solución')
+    else:
+        print('El sistema no tiene solución')
     return
 
 

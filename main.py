@@ -9,9 +9,13 @@ from encadenamientos import *
 
 if __name__ == "__main__":
     generador = Generador()
-    print ("Encadenamiento hacia Adelante")
+
+    print ("Encadenamiento hacia adelante")
     EncadenamientoHAd([generador.GenerarBC(6), generador.GenerarBH(3), generador.GenerarMeta()])
-    '''
-    print ("Encadenamiento hacia Atras")
-    EncadenamientoHA([generador.GenerarBC(), generador.GenerarBH(), generador.GenerarMeta()])
-    '''
+    
+    print()
+
+    print ("Encadenamiento hacia atras")
+    print('|NM   | Meta   | R  |     BH     ') #se imprime el encabezado aqui porque la recursividad lo imprimiria muchas veces
+    EncadenamientoHA([generador.GenerarBC(6), generador.GenerarBH(3), generador.GenerarMeta()])
+    

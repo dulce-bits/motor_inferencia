@@ -18,7 +18,7 @@ class Generador:
                 if p == '->':
                     break
                 aux2.append(p)            
-            reglas.append(Regla(aux2,[aux[-1],contador]))
+            reglas.append(Regla(aux2,[aux[-1]],contador))
             contador = contador + 1 
             print(aux2, aux[-1])
             """
