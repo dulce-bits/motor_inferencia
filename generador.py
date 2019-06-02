@@ -4,33 +4,20 @@ from Regla import Regla
 
 class Generador:
 
-    def GenerarBC(self,n):   #Aqui se definen las reglas X->Y|-Conclusion
-        """
+    def GenerarBC(self,filename):   #Aqui se definen las reglas X->Y|-Conclusion
         contador = 1  # el indice de la regla
-        reglasStr = []
-        for i in range(n):
-            reglasStr.append(input())
+        f = open(filename,'r')
         reglas=[]
-        for r in reglasStr:
+        for r in f:#Lee renglon por renglon en el archivo f
             aux = r.split() # lista con cada palabra
             aux2 = [] # guarda la premisa
             for p in aux:
                 if p == '->':
                     break
                 aux2.append(p)            
-            reglas.append(Regla(aux2,[aux[-1],contador]))
-            contador = contador + 1 
-            print(aux2, aux[-1])
-            """
-        reglas=[]
- 
-        reglas.append(Regla(['A','B'],['C'],1))
-        reglas.append(Regla(['A'],['D'],2))
-        reglas.append(Regla(['C','D'],['E'],3))
-        reglas.append(Regla(['B','E','F'],['G'],4))
-        reglas.append(Regla(['A','E'],['H'],5))
-        reglas.append(Regla(['D','E','H'],['I'],6))
-
+            reglas.append(Regla(aux2,[aux[-1]],contador))
+            contador += 1 
+        f.close()
         return reglas
 
        
