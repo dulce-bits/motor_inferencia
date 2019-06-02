@@ -3,7 +3,7 @@ from prettytable import PrettyTable
 def Encad_Atras(parametros):
     BC,BH,meta = parametros
     CC=[]
-    t = PrettyTable(['CC','NH','Meta','R','BH'])
+    t = PrettyTable(['CC','NM','Meta','R','BH'])
     t.add_row([' ',' ',meta,' ',str(BH)])
     result = verificar(BC,BH,meta,CC,t)
     print(t)
@@ -27,8 +27,9 @@ def verificar(BC,BH,meta,CC,t):
             while NM != [] and verificado:
                 meta = NM.pop(0)
                 verificado = verificar(BC,BH,meta,CC,t)
-                if verificado:
+                if verificado and meta not in BH:
                     BH.append(meta)
+        t.add_row([printCC(CC), str(regla.getConclusion()), str(meta), 'R'+str(regla.getIndex()),str(BH)])
         return verificado
 
 def equipar2(CC,BC,meta):
