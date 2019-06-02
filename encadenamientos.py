@@ -5,7 +5,6 @@ def EncadenamientoHA(parametros):
         for regla in BC:
             if comp(meta, regla.getConcluciones()):
                 if comp(regla.getPremisas(), BH):
-                    #print ("Se aplico Regla:", (regla.getPremisas(), regla.getConcluciones()))
                     BH.extend(regla.getConcluciones()) # agrega a la BH la conclusión de esa regla
                     print('|'+str(regla.getPremisas())+'| '+str(meta)+' | R'+str(regla.getIndex())+' |'+str(BH))
                     skip = True
@@ -26,7 +25,6 @@ def EncadenamientoHAd(parametros):
         skip = False
         for regla in BC:
             if comp(regla.getPremisas(), BH) and not comp(regla.getConcluciones(), BH):
-                #print ("Se aplico Regla:", (regla.getPremisas(), regla.getConcluciones()))
                 BH = BH + regla.getConcluciones()
                 print('|'+str(regla.getConcluciones())+'|  '+meta+'   | R'+str(regla.getIndex())+' |'+str(BH))
                 skip = True
